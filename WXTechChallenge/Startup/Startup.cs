@@ -1,9 +1,13 @@
 using Autofac;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json.Converters;
+using System.Text.Json.Serialization;
+using WXTechChallenge.Mappings;
 
 namespace WXTechChallenge.Startup
 {
@@ -19,7 +23,19 @@ namespace WXTechChallenge.Startup
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddControllersAsServices()
+                .AddNewtonsoftJson(opts =>
+                {
+                    opts.SerializerSettings.Converters.Add(new StringEnumConverter());
+                });
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            services.AddSingleton(mappingConfig.CreateMapper());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

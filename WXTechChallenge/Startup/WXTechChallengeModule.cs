@@ -21,6 +21,7 @@ namespace WXTechChallenge.Startup
                 .AsImplementedInterfaces();
 
             builder.RegisterInstance(_configuration.GetSection("UserSettings").Get<UserSettings>());
+            builder.RegisterInstance(_configuration.GetSection("WooliesXApiSettings").Get<WooliesXApiSettings>());
         }
     }
 }

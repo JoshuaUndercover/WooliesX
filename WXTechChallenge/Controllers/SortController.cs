@@ -21,7 +21,7 @@ namespace WXTechChallenge.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ProductDto>>> GetUser(SortOption sortOption)
         {
-            return await _sortService.GetProducts(sortOption, "545d6d04-b34b-42f0-acd4-b445aa52119d").ConfigureAwait(false);
+            return await _sortService.GetProducts(sortOption).ConfigureAwait(false);
         }
     }
 }

@@ -7,6 +7,6 @@ namespace WXTechChallenge.Services.Interfaces
 {
     public interface ISortService
     {
-        Task<List<ProductDto>> GetProducts(SortOption sortOption, string token);
+        Task<List<ProductDto>> GetProducts(SortOption sortOption);
     }
 }

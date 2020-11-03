@@ -7,28 +7,31 @@ using WXTechChallenge.ApiClients.Responses;
 using WXTechChallenge.Dtos.Response;
 using WXTechChallenge.Enums;
 using WXTechChallenge.Services.Interfaces;
+using WXTechChallenge.Settings;
 
 namespace WXTechChallenge.Services
 {
     public class SortService : ISortService
     {
         private readonly IWooliesXApiClient _wooliesXApiClient;
+        private readonly WooliesXApiSettings _settings;
         private readonly IMapper _mapper;
-        public SortService(IWooliesXApiClient wooliesXApiClient, IMapper mapper)
+        public SortService(IWooliesXApiClient wooliesXApiClient, WooliesXApiSettings settings, IMapper mapper)
         {
             _wooliesXApiClient = wooliesXApiClient;
+            _settings = settings;
             _mapper = mapper;
         }
-        public async Task<List<ProductDto>> GetProducts(SortOption sortOption, string token)
+        public async Task<List<ProductDto>> GetProducts(SortOption sortOption)
         {
             List<GetProductListResponse> sortedProducts;
             if (sortOption == SortOption.Recommended)
             {
-                sortedProducts = await GetShopperHistorySortedByPopularity(token).ConfigureAwait(false);
+                sortedProducts = await GetShopperHistorySortedByPopularity(_settings.Token).ConfigureAwait(false);
             }
             else
             {
-                var products = await _wooliesXApiClient.GetProducts(token).ConfigureAwait(false);
+                var products = await _wooliesXApiClient.GetProducts(_settings.Token).ConfigureAwait(false);
 
                 sortedProducts = sortOption switch
                 {

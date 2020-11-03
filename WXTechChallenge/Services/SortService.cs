@@ -50,26 +50,12 @@ namespace WXTechChallenge.Services
         {
             var shopperHistoryResponse = await _wooliesXApiClient.GetShopperHistory(token).ConfigureAwait(false);
 
-            var products = shopperHistoryResponse.SelectMany(x => x.Products).ToList();
-
-            Dictionary<string, decimal> productPopularities = new Dictionary<string, decimal>();
-
-            foreach(var product in products)
+            return shopperHistoryResponse.SelectMany(x => x.Products).GroupBy(x => x.Name).Select(g => new GetProductListResponse
             {
-                if(!productPopularities.ContainsKey(product.Name))
-                {
-                    productPopularities[product.Name] = 0;
-                }
-
-                productPopularities[product.Name] += product.Quantity;
-            }
-
-            return productPopularities.OrderByDescending(x => x.Value).Select(x =>
-            {
-                var first = products.First(p => p.Name == x.Key);
-                first.Quantity = x.Value;
-                return first;
-            }).ToList();
+                Name = g.Key,
+                Price = g.First().Price,
+                Quantity = g.Sum(x => x.Quantity)
+            }).OrderByDescending(x => x.Quantity).ToList();
         }
     }
 }

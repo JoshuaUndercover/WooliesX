@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WXTechChallenge.Common.Dtos.Response;
@@ -12,15 +13,23 @@ namespace WXTechChallenge.Controllers
     public class SortController : ControllerBase
     {
         private readonly ISortService _sortService;
+
         public SortController(ISortService sortService)
         {
             _sortService = sortService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> GetUser(SortOption sortOption)
+        public async Task<ActionResult<List<ProductDto>>> GetProducts(SortOption sortOption)
         {
-            return await _sortService.GetProducts(sortOption).ConfigureAwait(false);
+            try
+            {
+                return Ok(await _sortService.GetProducts(sortOption).ConfigureAwait(false));
+            }
+            catch (Exception e)
+            {
+                return BadRequest("An error has occurred. " + e.Message);
+            }
         }
     }
 }

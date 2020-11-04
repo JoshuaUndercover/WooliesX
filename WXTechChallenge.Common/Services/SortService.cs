@@ -39,13 +39,29 @@ namespace WXTechChallenge.Common.Services
                 return _mapper.Map<List<ProductDto>>(sortedProducts);
             }
 
+            //Get popular products by quantity
+            //Make an empty new list
+            //Go through popular products
+            //  If they exist in products, put them into the new list
+            //Go through the rest of the products list and add them to the end
+
             var popularProducts = await GetShopperHistorySortedByPopularity().ConfigureAwait(false);
 
-            var productsWithoutPopularityData = products.Where(x => popularProducts.All(y => y.Name != x.Name)).ToList();
+            var popularSortedList = new List<GetProductListResponse>();
 
-            var popularSortedList = popularProducts.ToList();
+            foreach (var popularProduct in popularProducts)
+            {
+                var product = products.FirstOrDefault(x => x.Name == popularProduct.Name);
+                if (product != null)
+                {
+                    popularSortedList.Add(product);
+                }
+            }
 
-            popularSortedList.AddRange(productsWithoutPopularityData.OrderBy(x => x.Quantity));
+            foreach (var product in products.Where(product => popularSortedList.All(x => x.Name != product.Name)))
+            {
+                popularSortedList.Add(product);
+            }
 
             return _mapper.Map<List<ProductDto>>(popularSortedList);
         }

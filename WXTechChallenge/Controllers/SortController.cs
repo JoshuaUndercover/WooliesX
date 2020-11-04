@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WXTechChallenge.Dtos.Response;
-using WXTechChallenge.Enums;
-using WXTechChallenge.Services.Interfaces;
+using WXTechChallenge.Common.Dtos.Response;
+using WXTechChallenge.Common.Enums;
+using WXTechChallenge.Common.Services.Interfaces;
 
 namespace WXTechChallenge.Controllers
 {

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WXTechChallenge", "WXTechChallenge\WXTechChallenge.csproj", "{BC06BF40-E5F6-4C33-82D3-847D43B9B0B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WXTechChallenge", "WXTechChallenge\WXTechChallenge.csproj", "{BC06BF40-E5F6-4C33-82D3-847D43B9B0B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WXTechChallenge.Common", "WXTechChallenge.Common\WXTechChallenge.Common.csproj", "{9FFA7F36-BDC9-4A38-93E8-1FB40B2935EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WXTechChallenge.Common.Tests", "WXTechChallenge.Common.Tests\WXTechChallenge.Common.Tests.csproj", "{9549776C-BB36-468D-93F9-6412E67249C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{BC06BF40-E5F6-4C33-82D3-847D43B9B0B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC06BF40-E5F6-4C33-82D3-847D43B9B0B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC06BF40-E5F6-4C33-82D3-847D43B9B0B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FFA7F36-BDC9-4A38-93E8-1FB40B2935EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FFA7F36-BDC9-4A38-93E8-1FB40B2935EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FFA7F36-BDC9-4A38-93E8-1FB40B2935EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FFA7F36-BDC9-4A38-93E8-1FB40B2935EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9549776C-BB36-468D-93F9-6412E67249C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9549776C-BB36-468D-93F9-6412E67249C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9549776C-BB36-468D-93F9-6412E67249C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9549776C-BB36-468D-93F9-6412E67249C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

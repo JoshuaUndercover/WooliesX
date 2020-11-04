@@ -6,8 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Converters;
-using System.Text.Json.Serialization;
-using WXTechChallenge.Mappings;
+using WXTechChallenge.Common.Autofac;
+using WXTechChallenge.Common.Mappings;
 
 namespace WXTechChallenge.Startup
 {

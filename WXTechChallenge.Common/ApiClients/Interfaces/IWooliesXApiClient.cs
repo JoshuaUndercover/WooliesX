@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using WXTechChallenge.ApiClients.Responses;
+using WXTechChallenge.Common.ApiClients.Responses;
 
-namespace WXTechChallenge.ApiClients.Interfaces
+namespace WXTechChallenge.Common.ApiClients.Interfaces
 {
     public interface IWooliesXApiClient
     {

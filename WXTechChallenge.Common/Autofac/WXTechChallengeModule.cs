@@ -1,12 +1,13 @@
-﻿using Autofac;
-using Microsoft.Extensions.Configuration;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using WXTechChallenge.Settings;
+using Autofac;
+using Microsoft.Extensions.Configuration;
+using WXTechChallenge.Common.Settings;
+using Module = Autofac.Module;
 
-namespace WXTechChallenge.Startup
+namespace WXTechChallenge.Common.Autofac
 {
-    public class WXTechChallengeModule : Autofac.Module
+    public class WXTechChallengeModule : Module
     {
         private readonly IConfiguration _configuration;
         public WXTechChallengeModule(IConfiguration configuration)

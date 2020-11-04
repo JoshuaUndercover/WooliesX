@@ -1,4 +1,4 @@
-﻿namespace WXTechChallenge.Settings
+﻿namespace WXTechChallenge.Common.Settings
 {
     public class WooliesXApiSettings
     {

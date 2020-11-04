@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using WXTechChallenge.Dtos.Response;
-using WXTechChallenge.Enums;
+using WXTechChallenge.Common.Dtos.Response;
+using WXTechChallenge.Common.Enums;
 
-namespace WXTechChallenge.Services.Interfaces
+namespace WXTechChallenge.Common.Services.Interfaces
 {
     public interface ISortService
     {

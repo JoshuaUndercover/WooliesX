@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WXTechChallenge.ApiClients.Interfaces;
-using WXTechChallenge.ApiClients.Responses;
-using WXTechChallenge.Dtos.Response;
-using WXTechChallenge.Enums;
-using WXTechChallenge.Services.Interfaces;
-using WXTechChallenge.Settings;
+using WXTechChallenge.Common.ApiClients.Interfaces;
+using WXTechChallenge.Common.ApiClients.Responses;
+using WXTechChallenge.Common.Dtos.Response;
+using WXTechChallenge.Common.Enums;
+using WXTechChallenge.Common.Services.Interfaces;
+using WXTechChallenge.Common.Settings;
 
-namespace WXTechChallenge.Services
+namespace WXTechChallenge.Common.Services
 {
     public class SortService : ISortService
     {

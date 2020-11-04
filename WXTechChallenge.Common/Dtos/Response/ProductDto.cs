@@ -1,4 +1,4 @@
-﻿namespace WXTechChallenge.Dtos.Response
+﻿namespace WXTechChallenge.Common.Dtos.Response
 {
     public class ProductDto
     {

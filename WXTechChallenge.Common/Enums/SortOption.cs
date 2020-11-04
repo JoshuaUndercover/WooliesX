@@ -1,4 +1,4 @@
-﻿namespace WXTechChallenge.Enums
+﻿namespace WXTechChallenge.Common.Enums
 {
     public enum SortOption
     {

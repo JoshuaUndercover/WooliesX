@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using WXTechChallenge.ApiClients.Interfaces;
-using WXTechChallenge.ApiClients.Responses;
-using WXTechChallenge.Settings;
+using WXTechChallenge.Common.ApiClients.Interfaces;
+using WXTechChallenge.Common.ApiClients.Responses;
+using WXTechChallenge.Common.Settings;
 
-namespace WXTechChallenge.ApiClients
+namespace WXTechChallenge.Common.ApiClients
 {
     public class WooliesXApiClient : HttpClient, IWooliesXApiClient
     {
@@ -18,7 +18,7 @@ namespace WXTechChallenge.ApiClients
         }
         public async Task<List<GetProductListResponse>> GetProducts(string token)
         {
-            if(string.IsNullOrEmpty(token))
+            if (string.IsNullOrEmpty(token))
             {
                 throw new ArgumentNullException(nameof(token));
             }

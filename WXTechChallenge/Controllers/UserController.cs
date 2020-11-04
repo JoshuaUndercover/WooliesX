@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WXTechChallenge.Dtos.Response;
-using WXTechChallenge.Services.Interfaces;
+using WXTechChallenge.Common.Dtos.Response;
+using WXTechChallenge.Common.Services.Interfaces;
 
 namespace WXTechChallenge.Controllers
 {

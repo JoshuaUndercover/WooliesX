@@ -1,6 +1,6 @@
-﻿namespace WXTechChallenge.Settings
+﻿namespace WXTechChallenge.Common.Dtos.Response
 {
-    public class UserSettings
+    public class UserDto
     {
         public string Name { get; set; }
         public string Token { get; set; }

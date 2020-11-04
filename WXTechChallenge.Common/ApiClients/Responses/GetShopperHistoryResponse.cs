@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WXTechChallenge.ApiClients.Responses
+namespace WXTechChallenge.Common.ApiClients.Responses
 {
     public class GetShopperHistoryResponse
     {

@@ -1,8 +1,8 @@
-﻿using WXTechChallenge.Dtos.Response;
-using WXTechChallenge.Services.Interfaces;
-using WXTechChallenge.Settings;
+﻿using WXTechChallenge.Common.Dtos.Response;
+using WXTechChallenge.Common.Services.Interfaces;
+using WXTechChallenge.Common.Settings;
 
-namespace WXTechChallenge.Services
+namespace WXTechChallenge.Common.Services
 {
     public class UserService : IUserService
     {

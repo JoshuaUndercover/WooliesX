@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using WXTechChallenge.ApiClients.Responses;
-using WXTechChallenge.Dtos.Response;
+using WXTechChallenge.Common.ApiClients.Responses;
+using WXTechChallenge.Common.Dtos.Response;
 
-namespace WXTechChallenge.Mappings
+namespace WXTechChallenge.Common.Mappings
 {
     public class MappingProfile : Profile
     {

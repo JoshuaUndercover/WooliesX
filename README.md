@@ -7,4 +7,4 @@ It's written using Layered Architecture and Autofac is used for IoC
 AutoMapper is used where needed to map models to dtos  
 Swagger has been added and is available at https://wxtechchallenge.azurewebsites.net/swagger  
 NewtonsoftJson's StringEnumConverter has been used for ease of use  
-Postman was also used for testing purposes locally  
+Postman was also used for testing purposes

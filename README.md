@@ -6,5 +6,5 @@ It is written in ASP.NET Core 3.1 with Visual Studios 2019, with unit testing do
 It's written using Layered Architecture and Autofac is used for IoC  
 AutoMapper is used where needed to map models to dtos  
 Swagger has been added and is available at https://wxtechchallenge.azurewebsites.net/swagger  
-NewtonsoftJson's StringEnumConverter has been used for ease of use
+NewtonsoftJson's StringEnumConverter has been used for ease of use  
 Postman was also used for testing purposes locally  

@@ -1,5 +1,5 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,7 +8,6 @@ using WXTechChallenge.Common.ApiClients.Responses;
 using WXTechChallenge.Common.Dtos.Response;
 using WXTechChallenge.Common.Enums;
 using WXTechChallenge.Common.Services.Interfaces;
-using WXTechChallenge.Common.Settings;
 
 namespace WXTechChallenge.Common.Services
 {

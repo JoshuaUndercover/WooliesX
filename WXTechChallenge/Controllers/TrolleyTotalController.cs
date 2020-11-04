@@ -17,6 +17,7 @@ namespace WXTechChallenge.Controllers
             _trolleyTotalService = trolleyTotalService;
         }
 
+        [HttpPost]
         public async Task<IActionResult> Calculate([FromBody] TrolleyRequest trolleyRequest)
         {
             try

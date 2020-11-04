@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace WXTechChallenge.Common.Dtos.Request
 {
@@ -21,9 +22,14 @@ namespace WXTechChallenge.Common.Dtos.Request
         public decimal Total { get; set; }
     }
 
-    public class ProductQuantity
+    public class ProductQuantity : ICloneable
     {
         public string Name { get; set; }
         public int Quantity { get; set; }
+
+        public object Clone()
+        {
+            return new ProductQuantity {Name = Name, Quantity = Quantity};
+        }
     }
 }

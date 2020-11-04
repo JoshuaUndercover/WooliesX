@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Threading.Tasks;
 using WXTechChallenge.Common.Dtos.Request;
 using WXTechChallenge.Common.Services.Interfaces;
 
@@ -18,11 +17,11 @@ namespace WXTechChallenge.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Calculate([FromBody] TrolleyRequest trolleyRequest)
+        public IActionResult Calculate([FromBody] TrolleyRequest trolleyRequest)
         {
             try
             {
-                return Ok(await _trolleyTotalService.GetTotal(trolleyRequest).ConfigureAwait(false));
+                return Ok(_trolleyTotalService.GetTotalInternal(trolleyRequest));
             }
             catch (Exception e)
             {

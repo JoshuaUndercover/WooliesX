@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,24 +35,21 @@ namespace WXTechChallenge.Common.Services
                     SortOption.High => products.OrderByDescending(x => x.Price).ToList(),
                     SortOption.Ascending => products.OrderBy(x => x.Name).ToList(),
                     SortOption.Descending => products.OrderByDescending(x => x.Name).ToList(),
-                    _ => throw new System.NotImplementedException(),
+                    _ => throw new ArgumentException(nameof(sortOption))
                 };
 
                 return _mapper.Map<List<ProductDto>>(sortedProducts);
             }
 
-            var shopperHistoryByPopularity = await GetShopperHistorySortedByPopularity(_settings.Token).ConfigureAwait(false);
+            var popularProducts = await GetShopperHistorySortedByPopularity(_settings.Token).ConfigureAwait(false);
 
-            var manualSortedProducts = new List<GetProductListResponse>
-            {
-                products.First(x => x.Name == "Test Product A"),
-                products.First(x => x.Name == "Test Product B"),
-                products.First(x => x.Name == "Test Product F"),
-                products.First(x => x.Name == "Test Product C"),
-                products.First(x => x.Name == "Test Product D")
-            };
+            var productsWithoutPopularityData = products.Where(x => popularProducts.All(y => y.Name != x.Name)).ToList();
 
-            return _mapper.Map<List<ProductDto>>(manualSortedProducts);
+            var popularSortedList = popularProducts.ToList();
+
+            popularSortedList.AddRange(productsWithoutPopularityData.OrderBy(x => x.Quantity));
+
+            return _mapper.Map<List<ProductDto>>(popularSortedList);
         }
 
         private async Task<List<GetProductListResponse>> GetShopperHistorySortedByPopularity(string token)

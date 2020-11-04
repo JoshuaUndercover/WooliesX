@@ -1,8 +1,6 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
-using WXTechChallenge.Common.Dtos.Response;
 using WXTechChallenge.Common.Enums;
 using WXTechChallenge.Common.Services.Interfaces;
 
@@ -20,7 +18,7 @@ namespace WXTechChallenge.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> GetProducts(SortOption sortOption)
+        public async Task<IActionResult> GetProducts(SortOption sortOption)
         {
             try
             {

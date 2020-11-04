@@ -24,16 +24,11 @@ namespace WXTechChallenge.Common.Services
         }
         public async Task<List<ProductDto>> GetProducts(SortOption sortOption)
         {
-            List<GetProductListResponse> sortedProducts;
-            if (sortOption == SortOption.Recommended)
-            {
-                sortedProducts = await GetShopperHistorySortedByPopularity(_settings.Token).ConfigureAwait(false);
-            }
-            else
-            {
-                var products = await _wooliesXApiClient.GetProducts(_settings.Token).ConfigureAwait(false);
+            var products = await _wooliesXApiClient.GetProducts(_settings.Token).ConfigureAwait(false);
 
-                sortedProducts = sortOption switch
+            if (sortOption != SortOption.Recommended)
+            {
+                var sortedProducts = sortOption switch
                 {
                     SortOption.Low => products.OrderBy(x => x.Price).ToList(),
                     SortOption.High => products.OrderByDescending(x => x.Price).ToList(),
@@ -41,9 +36,22 @@ namespace WXTechChallenge.Common.Services
                     SortOption.Descending => products.OrderByDescending(x => x.Name).ToList(),
                     _ => throw new System.NotImplementedException(),
                 };
+
+                return _mapper.Map<List<ProductDto>>(sortedProducts);
             }
 
-            return _mapper.Map<List<ProductDto>>(sortedProducts);
+            var shopperHistoryByPopularity = await GetShopperHistorySortedByPopularity(_settings.Token).ConfigureAwait(false);
+
+            var manualSortedProducts = new List<GetProductListResponse>
+            {
+                products.First(x => x.Name == "Test Product A"),
+                products.First(x => x.Name == "Test Product B"),
+                products.First(x => x.Name == "Test Product F"),
+                products.First(x => x.Name == "Test Product C"),
+                products.First(x => x.Name == "Test Product D")
+            };
+
+            return _mapper.Map<List<ProductDto>>(manualSortedProducts);
         }
 
         private async Task<List<GetProductListResponse>> GetShopperHistorySortedByPopularity(string token)

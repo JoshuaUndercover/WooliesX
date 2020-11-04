@@ -16,7 +16,7 @@ namespace WXTechChallenge
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup.Startup>();
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }

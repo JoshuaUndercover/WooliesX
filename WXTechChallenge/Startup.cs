@@ -9,7 +9,7 @@ using Newtonsoft.Json.Converters;
 using WXTechChallenge.Common.Autofac;
 using WXTechChallenge.Common.Mappings;
 
-namespace WXTechChallenge.Startup
+namespace WXTechChallenge
 {
     public class Startup
     {

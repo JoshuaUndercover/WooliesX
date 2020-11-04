@@ -13,7 +13,7 @@ namespace WXTechChallenge.Common.Services
         }
         public UserDto GetUser()
         {
-            return new UserDto() { Name = _userSettings.Name, Token = _userSettings.Token };
+            return new UserDto { Name = _userSettings.Name, Token = _userSettings.Token };
         }
     }
 }

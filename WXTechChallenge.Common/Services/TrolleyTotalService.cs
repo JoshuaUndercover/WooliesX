@@ -1,5 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using WXTechChallenge.Common.ApiClients.Interfaces;
 using WXTechChallenge.Common.Dtos.Request;
 using WXTechChallenge.Common.Services.Interfaces;
 
@@ -7,9 +7,16 @@ namespace WXTechChallenge.Common.Services
 {
     public class TrolleyTotalService : ITrolleyTotalService
     {
-        public Task<decimal> GetTotal(TrolleyRequest trolleyRequest)
+        private readonly IWooliesXApiClient _wooliesXApiClient;
+
+        public TrolleyTotalService(IWooliesXApiClient wooliesXApiClient)
         {
-            throw new NotImplementedException();
+            _wooliesXApiClient = wooliesXApiClient;
+        }
+
+        public async Task<decimal> GetTotal(TrolleyRequest trolleyRequest)
+        {
+            return await _wooliesXApiClient.GetTotal(trolleyRequest).ConfigureAwait(false);
         }
     }
 }

@@ -15,17 +15,15 @@ namespace WXTechChallenge.Common.Services
     public class SortService : ISortService
     {
         private readonly IWooliesXApiClient _wooliesXApiClient;
-        private readonly WooliesXApiSettings _settings;
         private readonly IMapper _mapper;
-        public SortService(IWooliesXApiClient wooliesXApiClient, WooliesXApiSettings settings, IMapper mapper)
+        public SortService(IWooliesXApiClient wooliesXApiClient, IMapper mapper)
         {
             _wooliesXApiClient = wooliesXApiClient;
-            _settings = settings;
             _mapper = mapper;
         }
         public async Task<List<ProductDto>> GetProducts(SortOption sortOption)
         {
-            var products = await _wooliesXApiClient.GetProducts(_settings.Token).ConfigureAwait(false);
+            var products = await _wooliesXApiClient.GetProducts().ConfigureAwait(false);
 
             if (sortOption != SortOption.Recommended)
             {
@@ -41,7 +39,7 @@ namespace WXTechChallenge.Common.Services
                 return _mapper.Map<List<ProductDto>>(sortedProducts);
             }
 
-            var popularProducts = await GetShopperHistorySortedByPopularity(_settings.Token).ConfigureAwait(false);
+            var popularProducts = await GetShopperHistorySortedByPopularity().ConfigureAwait(false);
 
             var productsWithoutPopularityData = products.Where(x => popularProducts.All(y => y.Name != x.Name)).ToList();
 
@@ -52,9 +50,9 @@ namespace WXTechChallenge.Common.Services
             return _mapper.Map<List<ProductDto>>(popularSortedList);
         }
 
-        private async Task<List<GetProductListResponse>> GetShopperHistorySortedByPopularity(string token)
+        private async Task<List<GetProductListResponse>> GetShopperHistorySortedByPopularity()
         {
-            var shopperHistoryResponse = await _wooliesXApiClient.GetShopperHistory(token).ConfigureAwait(false);
+            var shopperHistoryResponse = await _wooliesXApiClient.GetShopperHistory().ConfigureAwait(false);
 
             return shopperHistoryResponse.SelectMany(x => x.Products).GroupBy(x => x.Name).Select(g => new GetProductListResponse
             {
